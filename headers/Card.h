@@ -7,9 +7,9 @@
 #include <vector>
 #include <string>
 using namespace std;
+class Player;
 
-
-enum AbilityTiming
+enum Timing
 {
     NONE,
     START_OF_TURN,
@@ -25,7 +25,7 @@ enum AbilityTiming
     ON_FAINT
 };
 
-enum PetAbility
+enum Effect
 {
     NONE,
     BUFF,
@@ -33,7 +33,45 @@ enum PetAbility
     SNIPE,
     SUMMON
 };
-class Player;
+
+// enum Friend
+// {
+//     GEOFFREY,
+//     CHRIS,
+//     KYLE,
+//     RYAN,
+//     JAKE,
+//     JAMIE,
+//     RJ,
+//     JOSH,
+//      .....
+
+// };
+
+enum Food
+{
+    APPLE,
+    HONEY,
+    COOKIE,
+    GARLIC,
+    CANNED_FOOD,
+    CHILI,
+    MUSHROOM,
+    WEAKNESS,
+    PEAR,
+    SHAKE,
+    WEIGHT,
+    SLEEPING_PILL,
+    MELON,
+    PEANUTS
+
+};
+
+enum Type
+{
+    FRIEND_SIDE,
+    FOOD_SIDE
+};
 
 class Card
 {
@@ -42,8 +80,7 @@ class Card
     /******************************
     ** CONSTRUCTOR & DESTRUCTOR **
     ******************************/
-    Card(vector<int> cost, string name,
-         string      text);
+    Card(int cost, string name, string text, Type cardType);
     ~Card();
 
     virtual const void DisplayCard();
@@ -53,4 +90,5 @@ class Card
     string      name;           // Card name
     string      text;           // Flavor text or effect text for card
     int         cost;           // Gold req. to buy
+    Type        cardType;       // Friend or food    
 };
